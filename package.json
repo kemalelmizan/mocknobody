@@ -1,6 +1,6 @@
 {
   "name": "mocknobody",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "mocking local API server using 1 file",
   "main": "src/mocknobody",
   "scripts": {
