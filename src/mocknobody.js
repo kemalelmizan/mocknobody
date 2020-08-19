@@ -50,6 +50,15 @@ api.routes.map((route) => {
     case "post":
       app.post(route.url, handle(route));
       break;
+    case "put":
+      app.put(route.url, handle(route));
+      break;
+    case "patch":
+      app.patch(route.url, handle(route));
+      break;
+    case "delete":
+      app.delete(route.url, handle(route));
+      break;
   }
 })
 
@@ -66,7 +75,7 @@ app.all("*", (req, res) => {
 
 const port = process.env.PORT;
 const server = app.listen(port, () => {
-  console.log(`${new Date()} - mock started\nenv:\n\tPORT=${process.env.PORT}\nAvailable APIs: \n`
+  console.log(`${new Date()} - mock started\nenv:\n\tPORT=${process.env.PORT}\n\tAPI_JS=${api_js_file}\nAvailable APIs: \n`
     + api.routes
       .map(route => `\t${route.method} - ${route.url}`)
       .join("\n"))

@@ -26,10 +26,10 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
       "url": "/ping",
       "response": "pong",
     },
-    "not_found": {
-      "response": "not found",
-    },
-  ]
+  ],
+  "not_found": {
+    "response": "not found",
+  },
 }`;
     try {
       fs.writeFileSync(api_js_file, data, 'utf8');
@@ -43,7 +43,7 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
 }
 
 nodemon({
-  script: 'mocknobody.js',
+  script: 'src/mocknobody.js',
   "watch": [
     api_js_file,
   ],
