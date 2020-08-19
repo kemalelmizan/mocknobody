@@ -56,7 +56,7 @@ nodemon({
 
 nodemon.on('start', function () {
   console.log('App has started');
-}).on('exit', (code) => {
+}).on('crash', (code) => {
   nodemon.emit('quit');
   process.exit(code);
 }).on('quit', function () {
