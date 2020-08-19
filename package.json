@@ -8,6 +8,16 @@
   },
   "author": "Kemal Elmizan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kemalelmizan/mocknobody.git"
+  },
+  "keywords": [
+    "mock",
+    "server",
+    "mocking",
+    "api"
+  ],
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
