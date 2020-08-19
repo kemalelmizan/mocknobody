@@ -18,7 +18,7 @@ let api;
 try {
   api = require(api_js_file);
 } catch (e) {
-  if (e.code === "MODULE_NOT_FOUND") {
+  if (e.code === "MODULE_NOT_FOUND" || e.code === "ERR_INVALID_ARG_TYPE") {
     console.error(`${api_js_file} not found. Try running "mocknobody -c" first`);
     process.exit();
   } else {

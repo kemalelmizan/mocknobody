@@ -42,7 +42,7 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
 }
 
 nodemon({
-  script: "mocknobody-js",
+  exec: "mocknobody-js",
   "watch": [
     api_js_file,
   ],
