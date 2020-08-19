@@ -4,7 +4,8 @@
   "description": "mocking local API server using 1 file",
   "main": "src/mocknobody",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "preinstall": "node src/preinstall"
   },
   "author": "Kemal Elmizan",
   "license": "MIT",

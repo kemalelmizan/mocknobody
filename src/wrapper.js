@@ -12,7 +12,6 @@ const api_js_file = process.env.API_JS || `${api_js_dir}/api.js`;
 if (process.argv.includes("-c") || process.argv.includes("--config")) {
   // if file does not exist, create it. otherwise, open it
   if (fs.existsSync(api_js_file)) {
-    // TODO: use default editor to edit
     console.log(`Opening ${api_js_file} for configuration...`);
     exec('${EDITOR:-${VISUAL:-code}} ' + api_js_file)
   } else {
@@ -39,11 +38,16 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
     console.log(`API file has been saved! Opening ${api_js_file} for configuration...`);
     exec('${EDITOR:-${VISUAL:-code}} ' + api_js_file)
   }
-  process.exit(1);
+  process.exit();
+}
+
+let mocknobody_file = 'src/mocknobody.js';
+if (!fs.existsSync(mocknobody_file)) {
+  mocknobody_file = `${api_js_dir}/mocknobody.js`
 }
 
 nodemon({
-  script: 'src/mocknobody.js',
+  script: mocknobody_file,
   "watch": [
     api_js_file,
   ],
