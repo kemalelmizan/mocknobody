@@ -1,7 +1,7 @@
 # mocknobody
 [![npm version](https://badge.fury.io/js/mocknobody.svg)](https://badge.fury.io/js/mocknobody) [![Dependencies](https://david-dm.org/kemalelmizan/mocknobody.svg)](https://david-dm.org/kemalelmizan/mocknobody.svg) [![Known Vulnerabilities](https://snyk.io/test/github/kemalelmizan/mocknobody/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kemalelmizan/mocknobody?targetFile=package.json)
 
-Creating api server in your local machine with 1 file route configuration.
+Creates api server in your local machine with 1 file route configuration.
 Live-reloads the mock server if API config changes.
 Does not do any process on request body (hence `mocknobody`).
 
