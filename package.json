@@ -4,8 +4,7 @@
   "description": "mocking local API server using 1 file",
   "main": "src/mocknobody",
   "scripts": {
-    "test": "exit 0",
-    "preinstall": "node src/preinstall"
+    "test": "exit 0"
   },
   "author": "Kemal Elmizan",
   "license": "MIT",
@@ -26,6 +25,7 @@
     "nodemon": "^2.0.4"
   },
   "bin": {
-    "mocknobody": "src/wrapper.js"
+    "mocknobody": "src/wrapper.js",
+    "mocknobody-js": "src/mocknobody.js"
   }
 }

@@ -41,13 +41,8 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
   process.exit();
 }
 
-let mocknobody_file = 'src/mocknobody.js';
-if (!fs.existsSync(mocknobody_file)) {
-  mocknobody_file = `${api_js_dir}/mocknobody.js`
-}
-
 nodemon({
-  script: mocknobody_file,
+  script: "mocknobody-js",
   "watch": [
     api_js_file,
   ],
