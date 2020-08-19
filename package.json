@@ -2,7 +2,7 @@
   "name": "mocknobody",
   "version": "1.0.1",
   "description": "mocking local API server using 1 file",
-  "main": "wrapper.js",
+  "main": "src/mocknobody",
   "scripts": {
     "test": "exit 0"
   },
