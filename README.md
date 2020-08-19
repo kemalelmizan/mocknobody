@@ -1,4 +1,8 @@
-# mocknobody.js
+# mocknobody
+
+Creating api server in your local machine with 1 file route configuration.
+Live-reloads the mock server if API config changes.
+Does not do any process on request body (hence `mocknobody`).
 
 ## Installation
 ```
@@ -64,3 +68,9 @@ PORT=3001 API_JS=/var/mock/api.js mocknobody
 
 ## License
 MIT
+
+## Todos
+
+1. [ ] add tests
+1. [ ] add delays (similar to mocklocal)
+
