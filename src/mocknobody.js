@@ -40,6 +40,7 @@ const handle = (route) => (req, res) => {
   );
 
   res.header("Content-Type", "application/json");
+  res.status(route.status || 200);
   res.send(route.response);
 }
 

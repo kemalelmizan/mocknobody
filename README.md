@@ -31,6 +31,7 @@ In separate terminal, you can try this example request
 ```
 curl localhost:3000/ping
 ```
+(if the command `mocknobody` is too long, you can add `alias mock=mocknobody` on your .bashrc or .zshrc file and use `mock` instead.)
 
 ## `api.js` structure
 `api.js` has this structure:
@@ -40,6 +41,7 @@ module.exports = {
     {
       "method": "GET",
       "url": "/ping",
+      "status": 200,
       "response": "pong",
     },
   ],
@@ -48,11 +50,14 @@ module.exports = {
   },
 }
 ```
-- Put all your `routes` in `routes` with 3 values:
-  - `method`: Case-insensitive [http methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). Currently supports `get`, `post`, `put`, `patch` and `delete`.
-  - `url`: relative url of your API.
+- `routes`: array of route on your API, defined by 3 values:
+  - `method`: case-insensitive [http methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). Currently supports `get`, `post`, `put`, `patch` and `delete`.
+  - `url`: relative url of your API **without any param query**
+  - `status`: integer of [HTTP Response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
   - `response` : can be string or a javascript object (will be returned JSON as default)
 - `not_found`: default response if the route is not found
+
+Since `api.js` is imported just like normal javascript file by the server, you can add any logic on the file as you want. As long as the format exported is still the same as defined above, `mocknobody` will be able to parse them.
 
 ## Configurations
 All these options can be configured through environment variables
@@ -67,11 +72,9 @@ Example usage with config:
 PORT=3001 API_JS=/var/mock/api.js mocknobody
 ```
 
+#### Design decisions
+ - why use `api.js` and not `api.json`?
+    - In addition to enable you to be flexible with your logic by having javascript file instead of just json file, this will also enable you to comment out any routes/responses/anything while you develop your frontend. This is a tool for mocking APIs after all.
+
 ## License
 MIT
-
-## Todos
-
-1. [ ] add tests
-1. [ ] add delays (similar to mocklocal)
-
