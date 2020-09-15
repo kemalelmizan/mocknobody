@@ -3,6 +3,7 @@ module.exports = {
     {
       "method": "GET",
       "url": "/ping",
+      "status": 200,
       "response": "pong",
     },
   ],
