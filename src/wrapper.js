@@ -5,6 +5,7 @@ const fs = require("fs");
 const homedir = require('os').homedir();
 const { exec } = require('child_process');
 const nodemon = require('nodemon');
+const path = require('path');
 
 const api_js_dir = `${homedir}/.mocknobody`
 const api_js_file = process.env.API_JS || `${api_js_dir}/api.js`;
@@ -41,11 +42,16 @@ if (process.argv.includes("-c") || process.argv.includes("--config")) {
   process.exit();
 }
 
+let exec_string = "mocknobody-js"
+let watch_files = [api_js_file]
+if (process.env.DEV) {
+  exec_string = `${path.resolve(__dirname, 'mocknobody.js')}`
+  watch_files.push(path.resolve(__dirname, 'mocknobody.js'), path.resolve(__dirname, 'wrapper.js'))
+}
+
 nodemon({
-  exec: "mocknobody-js",
-  "watch": [
-    api_js_file,
-  ],
+  exec: exec_string,
+  "watch": watch_files,
   "env": {
     "NODE_ENV": "development",
     "PORT": process.env.PORT,
