@@ -39,9 +39,17 @@ const handle = (route) => (req, res) => {
     )}`
   );
 
+  // handle param queries
+  if (route.url !== req.url) {
+    const trueRoute = api.routes.find(r => r.url === req.url);
+    res.header("Content-Type", "application/json");
+    res.status(trueRoute.status || 200);
+    return res.send(trueRoute.response);
+  }
+
   res.header("Content-Type", "application/json");
   res.status(route.status || 200);
-  res.send(route.response);
+  return res.send(route.response);
 }
 
 api.routes.map((route) => {
