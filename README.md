@@ -52,7 +52,7 @@ module.exports = {
 ```
 - `routes`: array of route on your API, defined by 3 values:
   - `method`: case-insensitive [http methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). Currently supports `get`, `post`, `put`, `patch` and `delete`.
-  - `url`: relative url of your API **without any param query**
+  - `url`: relative url of your API. You can use same URL with different param queries in different routes.
   - `status`: integer of [HTTP Response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
   - `response` : can be string or a javascript object (will be returned JSON as default)
 - `not_found`: default response if the route is not found
