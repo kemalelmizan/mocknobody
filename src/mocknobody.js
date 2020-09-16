@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 
 const app = express();
+app.disable('x-powered-by');
 app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
@@ -40,15 +41,19 @@ const handle = (route) => (req, res) => {
   );
 
   // handle param queries
-  if (route.url !== req.url) {
-    const trueRoute = api.routes.find(r => r.url === req.url);
-    res.header("Content-Type", "application/json");
-    res.status(trueRoute.status || 200);
-    return res.send(trueRoute.response);
+  if (route.url !== req.url) route = api.routes.find(r => r.url === req.url);
+
+  let status = 200;
+  if (route.status) status = route.status;
+
+  if (typeof route.response === "object") res.header("Content-Type", "application/json");
+  if (route.headers && Object.keys(route.headers).length > 0) {
+    Object.keys(route.headers).map((headerKey) => {
+      res.header(headerKey, route.headers[headerKey]);
+    })
   }
 
-  res.header("Content-Type", "application/json");
-  res.status(route.status || 200);
+  res.status(status);
   return res.send(route.response);
 }
 
@@ -78,8 +83,9 @@ app.all("*", (req, res) => {
     } - ${JSON.stringify(req.body)}`
   );
   console.log("Invalid route");
-  res.header("Content-Type", "application/json")
-    .status(404)
+
+  if (typeof api.not_found.response === "object") res.header("Content-Type", "application/json");
+  res.status(404)
     .send(api.not_found.response);
 });
 

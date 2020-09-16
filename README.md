@@ -43,6 +43,10 @@ module.exports = {
       "url": "/ping",
       "status": 200,
       "response": "pong",
+      "headers": { 
+        "content-type": "application/json",
+        "x-test": "123"
+      },
     },
   ],
   "not_found": {
@@ -55,7 +59,10 @@ module.exports = {
   - `url`: relative url of your API. You can use same URL with different param queries in different routes.
   - `status`: integer of [HTTP Response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
   - `response` : can be string or a javascript object (will be returned JSON as default)
+  - `headers` : object of additional [response headers](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) you want to send. you can override existing response header or create new one.
 - `not_found`: default response if the route is not found
+
+You can check out `tests/api_test.js` for more examples.
 
 Since `api.js` is imported just like normal javascript file by the server, you can add any logic on the file as you want. As long as the format exported is still the same as defined above, `mocknobody` will be able to parse them.
 

@@ -4,7 +4,7 @@
   "description": "mocking local API server using 1 file",
   "main": "src/mocknobody",
   "scripts": {
-    "test": "exit 0"
+    "test": "jest --detectOpenHandles --forceExit --coverage"
   },
   "author": "Kemal Elmizan",
   "license": "MIT",
@@ -27,5 +27,9 @@
   "bin": {
     "mocknobody": "src/wrapper.js",
     "mocknobody-js": "src/mocknobody.js"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "supertest": "^4.0.2"
   }
 }
