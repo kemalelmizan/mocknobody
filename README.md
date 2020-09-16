@@ -78,7 +78,7 @@ DEV=true ./src/wrapper.js
 ```
 this will run `mocknobody.js` in src, as well as adding it and `wrapper.js` to file watch list.
 
-#### Design decisions
+## Design decisions
  - why use `api.js` and not `api.json`?
     - In addition to enable you to be flexible with your logic by having javascript file instead of just json file, this will also enable you to comment out any routes/responses/anything while you develop your frontend. This is a tool for mocking APIs after all.
 
