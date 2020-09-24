@@ -41,7 +41,8 @@ const handle = (route) => (req, res) => {
   );
 
   // handle param queries
-  if (route.url !== req.url) route = api.routes.find(r => r.url === req.url);
+  const trueRoute = api.routes.find(r => r.url === req.url);
+  if (route.url !== req.url && trueRoute) route = trueRoute;
 
   let status = 200;
   if (route.status) status = route.status;
